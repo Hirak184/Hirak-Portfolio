@@ -1,23 +1,116 @@
-import logo from './logo.svg';
 import './App.css';
+import { Homepage } from './Components/Home/Homepage';
+import { ResumePage } from './Components/Resume/ResumePage';
+import { NavigationBar } from './Components/Navigation/NavigationBar';
+import { Route, Routes } from 'react-router-dom';
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
+import { useState,useEffect,useMemo } from "react";
+import { ContactsPage } from './Components/Contact/Contacts';
 
 function App() {
+  const [init, setInit] = useState(false);
+  const [backgroundColor,setBackgroundColor] = useState("#08171E");
+  useEffect(() => {
+initParticlesEngine(async (engine) => {
+  await loadSlim(engine);
+}).then(() => {
+  setInit(true);
+});
+},[]);
+
+
+
+const particlesLoaded = (container) => {
+console.log(container);
+};
+
+const options = useMemo(
+() => ({
+  background: {
+    color: {
+      value: backgroundColor,  /* only use hex values*/
+    },
+  },
+  fpsLimit: 120,
+  interactivity: {
+    events: {
+      onClick: {
+        enable: true,
+        mode: "push",
+      },
+      onHover: {
+        enable: true,
+        mode: "repulse",
+      },
+    },
+    modes: {
+      push: {
+        quantity: 4,
+      },
+      repulse: {
+        distance: 200,
+        duration: 0.4,
+      },
+    },
+  },
+  particles: {
+    color: {
+      value: "#ffffff",
+    },
+    links: {
+      color: "#ffffff",
+      distance: 150,
+      enable: true,
+      opacity: 0.5,
+      width: 1,
+    },
+    move: {
+      direction: "none",
+      enable: true,
+      outModes: {
+        default: "bounce",
+      },
+      random: false,
+      speed: 6,
+      straight: false,
+    },
+    number: {
+      density: {
+        enable: true,
+      },
+      value: 80,
+    },
+    opacity: {
+      value: 0.5,
+    },
+    shape: {
+      type: "circle",
+    },
+    size: {
+      value: { min: 1, max: 5 },
+    },
+  },
+  detectRetina: true,
+}),
+[backgroundColor],
+);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       {
+      init?
+      <Particles
+      id="tsparticles"
+      particlesLoaded={particlesLoaded}
+      options={options}
+      />:null
+  }
+     <NavigationBar setcolor={setBackgroundColor} className="navbar" /> 
+      <Routes>
+           <Route path='/' element={<Homepage />}/>
+           <Route path='/resume' element={<ResumePage />}/>
+           <Route path='/contact' element={<ContactsPage />}/>
+      </Routes>      
     </div>
   );
 }
