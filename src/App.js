@@ -7,10 +7,11 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { useState,useEffect,useMemo } from "react";
 import { ContactsPage } from './Components/Contact/Contacts';
+import { WorkPage } from './Components/Work/WorkPage';
 
 function App() {
   const [init, setInit] = useState(false);
-  const [backgroundColor,setBackgroundColor] = useState("#08171E");
+  const backgroundColor = "#0A1828";
   useEffect(() => {
 initParticlesEngine(async (engine) => {
   await loadSlim(engine);
@@ -105,11 +106,12 @@ const options = useMemo(
       options={options}
       />:null
   }
-     <NavigationBar setcolor={setBackgroundColor} className="navbar" /> 
+     <NavigationBar className="navbar" /> 
       <Routes>
            <Route path='/' element={<Homepage />}/>
            <Route path='/resume' element={<ResumePage />}/>
            <Route path='/contact' element={<ContactsPage />}/>
+           <Route path='/work' element={<WorkPage />}/>
       </Routes>      
     </div>
   );
