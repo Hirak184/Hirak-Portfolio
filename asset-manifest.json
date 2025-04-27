@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/Hirak-Portfolio/static/css/main.831b5706.css",
+    "main.js": "/Hirak-Portfolio/static/js/main.30aff19a.js",
+    "static/js/453.2ddb282f.chunk.js": "/Hirak-Portfolio/static/js/453.2ddb282f.chunk.js",
+    "static/media/ProfileImage.jpg": "/Hirak-Portfolio/static/media/ProfileImage.7bc6635742639eeaa224.jpg",
+    "static/media/Resume1.png": "/Hirak-Portfolio/static/media/Resume1.30b0d91376e8580edd48.png",
+    "static/media/Resume2.png": "/Hirak-Portfolio/static/media/Resume2.e1443d7af56f02efe085.png",
+    "index.html": "/Hirak-Portfolio/index.html",
+    "main.831b5706.css.map": "/Hirak-Portfolio/static/css/main.831b5706.css.map",
+    "main.30aff19a.js.map": "/Hirak-Portfolio/static/js/main.30aff19a.js.map",
+    "453.2ddb282f.chunk.js.map": "/Hirak-Portfolio/static/js/453.2ddb282f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.831b5706.css",
+    "static/js/main.30aff19a.js"
+  ]
+}
